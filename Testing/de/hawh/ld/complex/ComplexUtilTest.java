@@ -63,7 +63,13 @@ public class ComplexUtilTest {
     }
 
     @Test
-    public void radiantAngle() {
+    public void getPhase() {
+        assertEquals(-1.249, ComplexUtil.getPhase(complex1), DELTA);
+        //assertEquals(-0.644, ComplexUtil.getPhase(complex2), DELTA);
+        assertEquals(1.1574, ComplexUtil.getPhase(complex3), DELTA);
+        assertEquals(-0.6498, ComplexUtil.getPhase(complex4), DELTA);
+        assertEquals(0.67229, ComplexUtil.getPhase(complex5), DELTA);
+        assertEquals(1.42918, ComplexUtil.getPhase(complex6), DELTA);
     }
 
     @Test

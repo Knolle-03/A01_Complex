@@ -49,7 +49,10 @@ class ComplexUtil {
           return Math.sqrt(real(num).multiply(real(num)).add(imag(num).multiply(imag(num))).doubleValue());
         }
 
-    static double getPhase(Complex num) {
+    static Double getPhase(Complex num) {
+        //TODO: fix phase for negative real parts.
+        double phase = 0.0D;
+        if (real(num) < 0)
         return Math.atan2(imag(num).doubleValue(), real(num).doubleValue());
     }
 
