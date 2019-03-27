@@ -17,7 +17,10 @@ class Complex {
         this.imag = imag;
     }
 
+    /*Complex (double abs, double rad, int lol ) {
+        this.real =
 
+    }*/
 
     double real() { return real; }
 
@@ -30,7 +33,7 @@ class Complex {
 
     @Override
     public String toString() {
-        return String.format("(%." + getDecimalPlaces(real) + "f  %+." + getDecimalPlaces(imag) + "fi)", real, imag);
+        return String.format("(%f  %+fi)", real, imag);
     }
 
     @Override
@@ -41,27 +44,10 @@ class Complex {
         return Double.compare(complex.real, real) == 0 &&
                 Double.compare(complex.imag, imag) == 0;
     }
-/*@Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            Complex other = (Complex)obj;
-            if (Double.doubleToLongBits(this.imag) != Double.doubleToLongBits(other.imag)) {
-                return false;
-            } else {
-                return Double.doubleToLongBits(this.real) == Double.doubleToLongBits(other.real);
-            }
-        }
-    }*/
 
-    private static int getDecimalPlaces(double num) {
+    /*private static int getDecimalPlaces(double num) {
         return String.valueOf(num).split("\\.")[1].length();
-    }
+    }*/
 }
 
 

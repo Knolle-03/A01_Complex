@@ -1,8 +1,9 @@
 package de.hawh.ld.complex;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-public class MathUtils {
+class MathUtils {
 
     static Complex exponentialFunction(Complex num) {
         double realP = Math.pow(Math.E, real(num).doubleValue()) * (Math.cos(imag(num).doubleValue()));
@@ -52,6 +53,84 @@ public class MathUtils {
         double imagP = Math.sinh(real(num).doubleValue()) * Math.sin(imag(num).doubleValue());
 
         return new Complex(realP, imagP);
+    }
+
+    static Complex hyperbolicTangent(Complex num) {
+        Complex complex1 = hyperbolicSine(num);
+        Complex complex2 = hyperbolicCosine(num);
+
+        return MathUtils.div(complex1, complex2);
+    }
+
+    static Complex add(Complex a, Complex b) {
+        double realPart = real(a).add(real(b)).doubleValue();
+        double imagPart = imag(a).add(imag(b)).doubleValue();
+
+        return new Complex(realPart, imagPart);
+    }
+
+    static Complex sub(Complex a, Complex b) {
+        double realPart = real(a).subtract(real(b)).doubleValue();
+        double imagPart = imag(a).subtract(imag(b)).doubleValue();
+
+        return new Complex(realPart, imagPart);
+    }
+
+    static Complex mul(Complex a, Complex b) {
+
+        double realPart = real(a).multiply(real(b)).subtract(imag(a).multiply(imag(b))).doubleValue();
+        double imagPart = real(a).multiply(imag(b)).add(imag(a).multiply(real(b))).doubleValue();
+
+        return new Complex(realPart, imagPart);
+    }
+
+    static Complex div(Complex a, Complex b) {
+/*
+        Complex res = new Complex(0, 0);
+
+        try {*/
+        double realPart = (real(a).multiply(real(b)).add(imag(a).multiply(imag(b))).divide
+                (real(b).multiply(real(b)).add(imag(b).multiply(imag(b))), 5, RoundingMode.UP)).doubleValue();
+
+        double imagPart = (real(b).multiply(imag(a)).subtract(real(a).multiply(imag(b))).divide
+                (real(b).multiply(real(b)).add(imag(b).multiply(imag(b))), 5, RoundingMode.UP)).doubleValue();
+
+        return new Complex(realPart, imagPart);
+       /* }
+        catch (ArithmeticException ex) {
+            System.out.println("NaN");
+            return res;
+        }*/
+    }
+
+    static double getAbs(Complex num) {
+        return Math.sqrt(real(num).multiply(real(num)).add(imag(num).multiply(imag(num))).doubleValue());
+    }
+
+    static Double getPhase(Complex num) {
+        return Math.atan2(imag(num).doubleValue(), real(num).doubleValue());
+    }
+
+    static double getDegreeOfPhase(Complex num) {
+        return Math.toDegrees(getPhase(num));
+    }
+
+    static String trigonometricPolarForm(Complex num) {
+        return String.format("(%f  {cos( %+f) +i*(sin( %+f)}",getAbs(num), getPhase(num),getPhase(num));
+    }
+
+    static String expoPolarForm(Complex num) {
+        return String.format("(%f * e^i*%+f)", getAbs(num), getPhase(num));
+    }
+
+    static Complex complexConjugate(Complex number) {
+        if(imag(number).compareTo(BigDecimal.ZERO) != 0) {
+
+            return new Complex(number.real(), (number.imag() * -1));
+        } else {
+
+            return new Complex(number.real(), number.imag());
+        }
     }
 
     private static BigDecimal real(Complex number) {
