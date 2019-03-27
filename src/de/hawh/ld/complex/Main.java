@@ -11,6 +11,7 @@ public class Main {
         Complex d = new Complex(0,0);
         Complex e = new Complex(1.0,2.0);
         Complex f = new Complex(3.0,1.0);
+        Complex g = new Complex(5,2.49, true);
         System.out.println(MathUtils.add(b, c));
         System.out.println(MathUtils.sub(d, f));
         System.out.println(MathUtils.mul(e, lol));

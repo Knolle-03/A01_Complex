@@ -104,22 +104,33 @@ class MathUtils {
     }
 
     static double getAbs(Complex num) {
+
         return Math.sqrt(real(num).multiply(real(num)).add(imag(num).multiply(imag(num))).doubleValue());
     }
 
     static Double getPhase(Complex num) {
-        return Math.atan2(imag(num).doubleValue(), real(num).doubleValue());
+        double phase = Math.atan2(imag(num).doubleValue(), real(num).doubleValue());
+        if (phase < 0) {
+
+            return phase + 2 * Math.PI;
+        } else {
+
+            return phase;
+        }
     }
 
     static double getDegreeOfPhase(Complex num) {
+
         return Math.toDegrees(getPhase(num));
     }
 
     static String trigonometricPolarForm(Complex num) {
+
         return String.format("(%f  {cos( %+f) +i*(sin( %+f)}",getAbs(num), getPhase(num),getPhase(num));
     }
 
     static String expoPolarForm(Complex num) {
+
         return String.format("(%f * e^i*%+f)", getAbs(num), getPhase(num));
     }
 
@@ -134,12 +145,14 @@ class MathUtils {
     }
 
     private static BigDecimal real(Complex number) {
-        //return number.real();
+
         return BigDecimal.valueOf(number.real());
     }
 
     private static BigDecimal imag(Complex number) {
-        //return number.imag();
+
         return BigDecimal.valueOf(number.imag());
     }
+
+
 }

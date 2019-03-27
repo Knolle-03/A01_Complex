@@ -2,14 +2,20 @@ package de.hawh.ld.complex;
 
 import java.util.Objects;
 
-class Complex {
+final class Complex {
 
-    private double real;
-    private double imag;
+    private final double real;
+    private final double imag;
 
     Complex () {
         this.real = 0.0D;
         this.imag = 0.0D;
+    }
+
+    Complex (double real) {
+        this.real = real;
+        this.imag = 0.0D;
+
     }
 
     Complex (double real, double imag) {
@@ -17,10 +23,15 @@ class Complex {
         this.imag = imag;
     }
 
-    /*Complex (double abs, double rad, int lol ) {
-        this.real =
-
-    }*/
+    Complex (double abs, double rad, boolean PolarOrNot ) {
+        if(PolarOrNot) {
+            this.real = abs * Math.cos(rad);
+            this.imag = abs * Math.sin(rad);
+        } else {
+            this.real = abs;
+            this.imag = rad;
+        }
+    }
 
     double real() { return real; }
 
