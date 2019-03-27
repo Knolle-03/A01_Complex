@@ -30,10 +30,8 @@ class Complex {
 
     @Override
     public String toString() {
-        return String.format("(%."+ getDecimalPlaces(real) + "f  %+." + getDecimalPlaces(imag) + "f)",real, imag);
+        return String.format("(%." + getDecimalPlaces(real) + "f  %+." + getDecimalPlaces(imag) + "fi)", real, imag);
     }
-
-
 
     @Override
     public boolean equals(Object o) {

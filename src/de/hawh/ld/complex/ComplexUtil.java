@@ -51,8 +51,7 @@ class ComplexUtil {
 
     static Double getPhase(Complex num) {
         //TODO: fix phase for negative real parts.
-        double phase = 0.0D;
-        if (real(num) < 0)
+
         return Math.atan2(imag(num).doubleValue(), real(num).doubleValue());
     }
 

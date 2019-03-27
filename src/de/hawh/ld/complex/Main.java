@@ -14,5 +14,12 @@ public class Main {
         System.out.println(ComplexUtil.trigoPolarForm(a));
         System.out.println(ComplexUtil.expoPolarForm(a));
         System.out.println(ComplexUtil.getPhase(a));
+        System.out.println(MathUtils.exponentialFunction(a));
+        System.out.println(MathUtils.hyperbolicSine(a));
+        System.out.println(MathUtils.hyperbolicCosine(a));
+        System.out.println("sine:" + MathUtils.sine(a));
+        System.out.println("cosine:" +  MathUtils.cosine(a));
+        System.out.println("tangent:" + MathUtils.tangent(a));
+        System.out.println("ln:" + MathUtils.logarithm(a));
     }
 }
