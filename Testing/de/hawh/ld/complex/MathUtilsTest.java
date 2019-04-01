@@ -7,52 +7,52 @@ import static org.junit.Assert.assertEquals;
 public class MathUtilsTest {
 
     private double DELTA = 0.00005;
-    private Complex complex1 = new Complex(2.00000,-6.000000);
-    private Complex complex2 = new Complex(-4.0000,3.0000000);
-    private Complex complex3 = new Complex(3.94800,9.0000000);
-    private Complex complex4 = new Complex(7.03900,-5.349000);
-    private Complex complex5 = new Complex(500.000,398.00000);
-    private Complex complex6 = new Complex(13.3039,93.320294);
-    private Complex complex7 = new Complex();
+    private Complex complex1 = new ComplexImmutable(2.00000,-6.000000);
+    private Complex complex2 = new ComplexImmutable(-4.0000,3.0000000);
+    private Complex complex3 = new ComplexImmutable(3.94800,9.0000000);
+    private Complex complex4 = new ComplexImmutable(7.03900,-5.349000);
+    private Complex complex5 = new ComplexImmutable(500.000,398.00000);
+    private Complex complex6 = new ComplexImmutable(13.3039,93.320294);
+    private Complex complex7 = new ComplexImmutable();
 
-    private Complex polarComplex1 = new Complex(6.3246,5.0341, true);
-    private Complex polarComplex2 = new Complex(5.0000,2.4981, true);
-    private Complex polarComplex3 = new Complex(9.8279,1.1574, true);
-    private Complex polarComplex4 = new Complex(8.8408,5.6334, true);
-    private Complex polarComplex5 = new Complex(639.06,0.6723, true);
-    private Complex polarComplex6 = new Complex(94.264,1.4292, true);
-    private Complex polarComplex7 = new Complex(0.0000,0.0000, true);
+    private Complex polarComplex1 = new ComplexImmutable(6.3246,5.0341, true);
+    private Complex polarComplex2 = new ComplexImmutable(5.0000,2.4981, true);
+    private Complex polarComplex3 = new ComplexImmutable(9.8279,1.1574, true);
+    private Complex polarComplex4 = new ComplexImmutable(8.8408,5.6334, true);
+    private Complex polarComplex5 = new ComplexImmutable(639.06,0.6723, true);
+    private Complex polarComplex6 = new ComplexImmutable(94.264,1.4292, true);
+    private Complex polarComplex7 = new ComplexImmutable(0.0000,0.0000, true);
 
 
     @Test
     public void add() {
-        assertEquals(new Complex(-2.00000, -3.0000000), MathUtils.add(complex1, complex2));
-        assertEquals(new Complex(10.98700, 3.65100000), MathUtils.add(complex3, complex4));
-        assertEquals(new Complex(513.3039, 491.320294), MathUtils.add(complex5, complex6));
+        assertEquals(new ComplexImmutable(-2.00000, -3.0000000), MathUtils.add(complex1, complex2));
+        assertEquals(new ComplexImmutable(10.98700, 3.65100000), MathUtils.add(complex3, complex4));
+        assertEquals(new ComplexImmutable(513.3039, 491.320294), MathUtils.add(complex5, complex6));
     }
 
     @Test
     public void sub() {
-        assertEquals(new Complex(6.000000, -9.0000000), MathUtils.sub(complex1, complex2));
-        assertEquals(new Complex(-3.09100, 14.3490000), MathUtils.sub(complex3, complex4));
-        assertEquals(new Complex(486.6961, 304.679706), MathUtils.sub(complex5, complex6));
+        assertEquals(new ComplexImmutable(6.000000, -9.0000000), MathUtils.sub(complex1, complex2));
+        assertEquals(new ComplexImmutable(-3.09100, 14.3490000), MathUtils.sub(complex3, complex4));
+        assertEquals(new ComplexImmutable(486.6961, 304.679706), MathUtils.sub(complex5, complex6));
     }
 
     @Test
     public void mul() {
-        assertEquals(new Complex(10.0000000000, 30.0000000), MathUtils.mul(complex1, complex2));
-        assertEquals(new Complex(75.9309720000, 42.2331480), MathUtils.mul(complex3, complex4));
-        assertEquals(new Complex(-30489.527012, 51955.0992), MathUtils.mul(complex5, complex6));
+        assertEquals(new ComplexImmutable(10.0000000000, 30.0000000), MathUtils.mul(complex1, complex2));
+        assertEquals(new ComplexImmutable(75.9309720000, 42.2331480), MathUtils.mul(complex3, complex4));
+        assertEquals(new ComplexImmutable(-30489.527012, 51955.0992), MathUtils.mul(complex5, complex6));
     }
 
     @Test
     public void div() {
-        assertEquals(new Complex(-1.0400000000, 0.7200000000).real(), MathUtils.div(complex1, complex2).real(), DELTA);
-        assertEquals(new Complex(-1.0400000000, 0.7200000000).imag(), MathUtils.div(complex1, complex2).imag(), DELTA);
-        assertEquals(new Complex(-0.2603787684, 1.0807265190).real(), MathUtils.div(complex3, complex4).real(), DELTA);
-        assertEquals(new Complex(-0.2603787684, 1.0807265190).imag(), MathUtils.div(complex3, complex4).imag(), DELTA);
-        assertEquals(new Complex(4.92854471800, -4.655269666).real(), MathUtils.div(complex5, complex6).real(), DELTA);
-        assertEquals(new Complex(4.92854471800, -4.655269666).imag(), MathUtils.div(complex5, complex6).imag(), DELTA);
+        assertEquals(new ComplexImmutable(-1.0400000000, 0.7200000000).real(), MathUtils.div(complex1, complex2).real(), DELTA);
+        assertEquals(new ComplexImmutable(-1.0400000000, 0.7200000000).imag(), MathUtils.div(complex1, complex2).imag(), DELTA);
+        assertEquals(new ComplexImmutable(-0.2603787684, 1.0807265190).real(), MathUtils.div(complex3, complex4).real(), DELTA);
+        assertEquals(new ComplexImmutable(-0.2603787684, 1.0807265190).imag(), MathUtils.div(complex3, complex4).imag(), DELTA);
+        assertEquals(new ComplexImmutable(4.92854471800, -4.655269666).real(), MathUtils.div(complex5, complex6).real(), DELTA);
+        assertEquals(new ComplexImmutable(4.92854471800, -4.655269666).imag(), MathUtils.div(complex5, complex6).imag(), DELTA);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -94,13 +94,13 @@ public class MathUtilsTest {
 
     @Test
     public void complexConjugate() {
-        assertEquals(new Complex(2.00000, 6.00000000), MathUtils.complexConjugate(complex1));
-        assertEquals(new Complex(-4.0000, -3.0000000), MathUtils.complexConjugate(complex2));
-        assertEquals(new Complex(3.94800, -9.0000000), MathUtils.complexConjugate(complex3));
-        assertEquals(new Complex(7.03900, 5.34900000), MathUtils.complexConjugate(complex4));
-        assertEquals(new Complex(500.000, -398.00000), MathUtils.complexConjugate(complex5));
-        assertEquals(new Complex(13.3039, -93.320294), MathUtils.complexConjugate(complex6));
-        assertEquals(new Complex(0.00000, 0.00000000), MathUtils.complexConjugate(complex7));
+        assertEquals(new ComplexImmutable(2.00000, 6.00000000), MathUtils.complexConjugate(complex1));
+        assertEquals(new ComplexImmutable(-4.0000, -3.0000000), MathUtils.complexConjugate(complex2));
+        assertEquals(new ComplexImmutable(3.94800, -9.0000000), MathUtils.complexConjugate(complex3));
+        assertEquals(new ComplexImmutable(7.03900, 5.34900000), MathUtils.complexConjugate(complex4));
+        assertEquals(new ComplexImmutable(500.000, -398.00000), MathUtils.complexConjugate(complex5));
+        assertEquals(new ComplexImmutable(13.3039, -93.320294), MathUtils.complexConjugate(complex6));
+        assertEquals(new ComplexImmutable(0.00000, 0.00000000), MathUtils.complexConjugate(complex7));
     }
 
     @Test
@@ -267,4 +267,5 @@ public class MathUtilsTest {
         assertEquals(0.00000000000000000000, MathUtils.hyperbolicTangent(complex7).real(), DELTA);
         assertEquals(0.00000000000000000000, MathUtils.hyperbolicTangent(complex7).imag(), DELTA);
     }
+
 }
