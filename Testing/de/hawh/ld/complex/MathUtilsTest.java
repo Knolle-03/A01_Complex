@@ -112,7 +112,7 @@ public class MathUtilsTest {
 
     @Test
     public void polarEqualsCartesian() {
-        double delta = 0.05;
+        double delta = 0.005;
         assertEquals(complex1.real(), polarComplex1.real(), delta);
         assertEquals(complex1.imag(), polarComplex1.imag(), delta);
         assertEquals(complex2.real(), polarComplex2.real(), delta);

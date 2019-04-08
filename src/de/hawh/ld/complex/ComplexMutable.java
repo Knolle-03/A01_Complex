@@ -73,7 +73,7 @@ public class ComplexMutable extends Complex {
 
     @Override
     public String toString() {
-        return String.format("(%." + getDecimalPlaces(real) + "f  %+." + getDecimalPlaces(imag) + "fi)", real, imag);
+        return String.format("(%." + getDecimalPlaces(real) + "f %+." + getDecimalPlaces(imag) + "fi)", real, imag);
     }
 
     private long getDecimalPlaces(double num) {
