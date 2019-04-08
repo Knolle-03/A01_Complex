@@ -5,6 +5,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+
+/**
+ * @author Lennart Draeger
+ *
+ * test class for ComplexMutable
+ * It tests for the correct implementation of hashCode, eqauls and to_String
+ */
 public class ComplexMutableTest {
 
 
@@ -17,6 +24,14 @@ public class ComplexMutableTest {
     private Complex complex7 = new ComplexMutable(0.0, 0.0);
     private Complex complex8 = new ComplexMutable(5.1651654654, 2.156516541651);
 
+    private Complex complex1_1 = new ComplexImmutable();
+    private Complex complex2_1 = new ComplexImmutable(5);
+    private Complex complex3_1 = new ComplexImmutable(5, 5);
+    private Complex complex4_1 = new ComplexImmutable(0, 0 );
+    private Complex complex5_1 = new ComplexImmutable(5,5, true);
+    private Complex complex6_1 = new ComplexImmutable(5.0, 5.0);
+    private Complex complex7_1 = new ComplexImmutable(0.0, 0.0);
+
     @Test
     public void equals() {
         assertEquals(complex1, complex1); // reflexive
@@ -25,6 +40,13 @@ public class ComplexMutableTest {
         assertEquals(complex4, complex7); // transitive
         assertEquals(complex1, complex7); // transitive
         assertNotEquals(complex5, complex3);
+        assertNotEquals(complex1, complex1_1);
+        assertNotEquals(complex2, complex2_1);
+        assertNotEquals(complex3, complex3_1);
+        assertNotEquals(complex4, complex4_1);
+        assertNotEquals(complex5, complex5_1);
+        assertNotEquals(complex6, complex6_1);
+        assertNotEquals(complex7, complex7_1);
     }
 
     @Test
@@ -34,18 +56,25 @@ public class ComplexMutableTest {
         assertEquals(complex4.hashCode(), complex1.hashCode()); // symmetrical
         assertEquals(complex4.hashCode(), complex7.hashCode()); // transitive
         assertEquals(complex1.hashCode(), complex7.hashCode()); // transitive
+        assertNotEquals(complex1.hashCode(), complex1_1.hashCode());
+        assertNotEquals(complex2.hashCode(), complex2_1.hashCode());
+        assertNotEquals(complex3.hashCode(), complex3_1.hashCode());
+        assertNotEquals(complex4.hashCode(), complex4_1.hashCode());
+        assertNotEquals(complex5.hashCode(), complex5_1.hashCode());
+        assertNotEquals(complex6.hashCode(), complex6_1.hashCode());
+        assertNotEquals(complex7.hashCode(), complex7_1.hashCode());
     }
 
     @Test
     public void testToString() {
-        assertEquals("(0,000000  +0,000000i)", complex1.toString());
-        assertEquals("(0,000000  +0,000000i)", complex4.toString());
-        assertEquals("(0,000000  +0,000000i)", complex7.toString());
-        assertEquals("(5,000000  +0,000000i)", complex2.toString());
-        assertEquals("(5,000000  +5,000000i)", complex3.toString());
-        assertEquals("(1,418311  -4,794621i)", complex5.toString());
-        assertEquals("(5,000000  +5,000000i)", complex6.toString());
-        assertEquals("(5161651,165165  +2,156517i)", complex8.toString());
+        assertEquals("(0,0  +0,0i)", complex1.toString());
+        assertEquals("(0,0  +0,0i)", complex4.toString());
+        assertEquals("(0,0  +0,0i)", complex7.toString());
+        assertEquals("(5,0  +0,0i)", complex2.toString());
+        assertEquals("(5,0  +5,0i)", complex3.toString());
+        assertEquals("(5,0  +5,0i)", complex6.toString());
+        assertEquals("(1,4183109273161312  -4,794621373315692i)", complex5.toString());
+        assertEquals("(5,1651654654  +2,156516541651i)", complex8.toString());
 
     }
 

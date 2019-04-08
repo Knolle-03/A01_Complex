@@ -1,13 +1,25 @@
 package de.hawh.ld.complex;
 
-abstract class Complex {
+/**
+ * @author Lennart Draeger
+ *
+ * abstract class Complex which is used to create to derived classes ComplexMutable and ComplexImmutable.
+ */
+
+public abstract class Complex {
 
     private double real = real();
     private double imag = imag();
 
-    public double real() { return real; }
+    double real() { return real; }
 
-    public double imag() { return imag; }
+    double imag() { return imag; }
+
+    public abstract boolean equals(Object o);
+    public abstract int hashCode();
+    public abstract String toString();
+
+
 }
 
 

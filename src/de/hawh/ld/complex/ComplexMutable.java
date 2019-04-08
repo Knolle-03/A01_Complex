@@ -2,28 +2,36 @@ package de.hawh.ld.complex;
 
 import java.util.Objects;
 
+/**
+ * @author Lennart Draeger
+ *
+ * derived class from the abstract class Complex. Can construct object in mutiple ways
+ * equals and hashCode is overridden, so that only ComplexMutable objects can be
+ * compared in terms of attributes.
+ */
+
 public class ComplexMutable extends Complex {
 
     private double real;
     private double imag;
 
-    ComplexMutable () {
+    public ComplexMutable () {
         this.real = 0.0D;
         this.imag = 0.0D;
     }
 
-    ComplexMutable (double real) {
+    public ComplexMutable (double real) {
         this.real = real;
         this.imag = 0.0D;
 
     }
 
-    ComplexMutable (double real, double imag) {
+    public ComplexMutable (double real, double imag) {
         this.real = real;
         this.imag = imag;
     }
 
-    ComplexMutable (double abs, double rad, boolean PolarOrNot ) {
+    public ComplexMutable (double abs, double rad, boolean PolarOrNot ) {
         if(PolarOrNot) {
             this.real = abs * Math.cos(rad);
             this.imag = abs * Math.sin(rad);
@@ -60,13 +68,17 @@ public class ComplexMutable extends Complex {
 
     @Override
     public int hashCode() {
-        return Objects.hash(real, imag);
+        return 13 * Objects.hash(real, imag);
     }
 
     @Override
     public String toString() {
-        return String.format("(%f  %+fi)", real, imag);
+        return String.format("(%." + getDecimalPlaces(real) + "f  %+." + getDecimalPlaces(imag) + "fi)", real, imag);
     }
 
+    private long getDecimalPlaces(double num) {
+        return String.valueOf(num).split("\\.")[1].length();
+
+    }
 
 }

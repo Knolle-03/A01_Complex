@@ -2,28 +2,34 @@ package de.hawh.ld.complex;
 
 import java.util.Objects;
 
+/**
+ * @author Lennart Draeger
+ *
+ * derived class from the abstract class Complex. Can construct object in mutiple ways
+ * equals and hashCode is overridden, so that only ComplexImmutable objects can be
+ * compared in terms of attributes.
+ */
 public final class ComplexImmutable extends Complex {
 
     private final double real;
     private final double imag;
 
-    ComplexImmutable() {
+    public ComplexImmutable() {
         this.real = 0.0D;
         this.imag = 0.0D;
     }
 
-    ComplexImmutable (double real) {
+    public ComplexImmutable (double real) {
         this.real = real;
         this.imag = 0.0D;
-
     }
 
-    ComplexImmutable (double real, double imag) {
+    public ComplexImmutable (double real, double imag) {
         this.real = real;
         this.imag = imag;
     }
 
-    ComplexImmutable (double abs, double rad, boolean PolarOrNot ) {
+    public ComplexImmutable (double abs, double rad, boolean PolarOrNot ) {
         if(PolarOrNot) {
             this.real = abs * Math.cos(rad);
             this.imag = abs * Math.sin(rad);
@@ -48,7 +54,7 @@ public final class ComplexImmutable extends Complex {
 
     @Override
     public int hashCode() {
-        return Objects.hash(real, imag);
+        return 7 * Objects.hash(real, imag);
     }
 
     @Override
@@ -60,5 +66,4 @@ public final class ComplexImmutable extends Complex {
         return String.valueOf(num).split("\\.")[1].length();
 
     }
-
 }

@@ -4,6 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Lennart Draeger
+ *
+ * test class for MathUtils
+ * Tests all methods of MathUtils except trigonometricPolarForm() and expoPolarForm() as they only
+ * print Strings using getAbs() and getPahse().
+ */
 public class MathUtilsTest {
 
     private double DELTA = 0.00005;
@@ -267,5 +274,6 @@ public class MathUtilsTest {
         assertEquals(0.00000000000000000000, MathUtils.hyperbolicTangent(complex7).real(), DELTA);
         assertEquals(0.00000000000000000000, MathUtils.hyperbolicTangent(complex7).imag(), DELTA);
     }
-
 }
+
+
