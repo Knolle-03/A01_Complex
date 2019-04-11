@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class FileIO {
@@ -29,7 +30,7 @@ public class FileIO {
             e.printStackTrace();
         }
 
-        while (file.hasNextLine()) {
+        while (Objects.requireNonNull(file).hasNextLine()) {
             list.add(file.nextLine());
         }
         return list;

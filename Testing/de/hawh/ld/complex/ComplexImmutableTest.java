@@ -64,14 +64,14 @@ public class ComplexImmutableTest {
 
     @Test
     public void testToString() {
-        assertEquals("(0,0  +0,0i)", complex1.toString());
-        assertEquals("(0,0  +0,0i)", complex4.toString());
-        assertEquals("(0,0  +0,0i)", complex7.toString());
-        assertEquals("(5,0  +0,0i)", complex2.toString());
-        assertEquals("(5,0  +5,0i)", complex3.toString());
-        assertEquals("(5,0  +5,0i)", complex6.toString());
-        assertEquals("(1,4183109273161312  -4,794621373315692i)", complex5.toString());
-        assertEquals("(5,126514651654654  +2,156516234541651i)", complex8.toString());
+        assertEquals("(0,0 +0,0i)", complex1.toString());
+        assertEquals("(0,0 +0,0i)", complex4.toString());
+        assertEquals("(0,0 +0,0i)", complex7.toString());
+        assertEquals("(5,0 +0,0i)", complex2.toString());
+        assertEquals("(5,0 +5,0i)", complex3.toString());
+        assertEquals("(5,0 +5,0i)", complex6.toString());
+        assertEquals("(1,4183109273161312 -4,794621373315692i)", complex5.toString());
+        assertEquals("(5,126514651654654 +2,156516234541651i)", complex8.toString());
 
 
 

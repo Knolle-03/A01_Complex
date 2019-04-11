@@ -48,7 +48,7 @@ public class Fractals {
         ArrayList<String> sortedList = Fractals.doubleToString(Fractals.sortList(juliaObjs));
         System.out.println(sortedList);
         FileIO.fileWriter(sortedList, "sortedJuliaList.txt");
-
+        System.out.println(Math.E);
     }
 
 
